@@ -13,18 +13,7 @@ paginate_path: "/blog/page:num/"
 
 tag_permalink_style: pretty
 tag_page_layout: tag_page
-# tag_page_dir: tag
-
-tag_page: '/blog/tags/'
-category_page: '/blog/categories/'
-
-nav:
-  Home:           
-    - '/'
-  Blog:           
-    - '/blog/'
-    - { Categories: '/blog/categories/' }
-    - { Tags: '/blog/tags/' }
+tag_page_dir: tag
 
 # jekyll-dash date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -52,4 +41,4 @@ plugins:
  - jekyll-seo-tag
  - jekyll-paginate
  - liquid-md5
- - jekyll-tagging
+# - jekyll-tagging not working
