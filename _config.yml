@@ -41,4 +41,4 @@ plugins:
  - jekyll-seo-tag
  - jekyll-paginate
  - liquid-md5
- - jekyll/tagging
+ - jekyll-tagging
