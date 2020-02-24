@@ -19,12 +19,6 @@ layout: default
   {{ content }}
 </div>
 
-{% if site.dash.disqus.shortname %}
-<div class="comments">
-{% include disqus.html %}
-</div>
-{% endif %}
-
 {% assign size = site.related_posts | size %}
 {% if size != 0 %}
 <div class="related">
