@@ -1,8 +1,3 @@
----
-layout: default
-title: Home
----
-
 <div class="posts">
 
   <!-- Normal posts listed in the order of time -->
@@ -31,5 +26,6 @@ title: Home
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
   </div>
-  </div>
+  <hr>
+  {% endfor %}
 </div>
