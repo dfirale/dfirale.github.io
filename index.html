@@ -3,12 +3,6 @@ layout: default
 title: Home
 ---
 
-<div id="particles-js"></div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script
-particlesJS.load('particles-js', 'assets/particles.json', function() {
-  console.log('callback - particles.js config loaded');
-});
-
 <div class="author-box">
 
 <img class="author-avatar" src="https://www.hackthebox.eu/storage/avatars/e25b1022c99238f92d24dfa5f442d799.png">
@@ -52,3 +46,9 @@ particlesJS.load('particles-js', 'assets/particles.json', function() {
   <hr>
   {% endfor %}
 </div>
+
+<div id="particles-js"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script
+particlesJS.load('particles-js', 'assets/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
