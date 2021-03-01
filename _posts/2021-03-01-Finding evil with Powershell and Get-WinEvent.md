@@ -18,4 +18,4 @@ With the FilterHashtable parameter a simple query looks something like this:
 
 If you use FilterHashtable the data field must be an exact match. Wildcards are not accepted:
 
-<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic2.PNG" width="100"/>
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic3.PNG" width="100"/>
