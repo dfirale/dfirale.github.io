@@ -6,8 +6,6 @@ category: DFIR
 tags: [DFIR, Powershell, Sigma, Rules]
 ---
 
-<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/powershell.png" width="100"/>
-
 # Get-WinEvent usage
 
 PowerShell is natively installed in Windows Vista and newer, and includes the Get-WinEvent cmdlet by default.
