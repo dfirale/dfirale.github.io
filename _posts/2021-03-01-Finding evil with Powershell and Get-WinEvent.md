@@ -16,7 +16,7 @@ With the FilterHashtable parameter a simple query looks something like this:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic1.PNG" width="100"/>
 
-If you use FilterHashtable the data field must be an exact match. Wildcards are not accepted:
+When you use FilterHashtable, the data field must be an exact match. Wildcards are not accepted:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic3.PNG" width="100"/>
 
@@ -24,7 +24,7 @@ For better performance, <u>always specify atleast the event id you are looking f
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/perf.png" width="100"/>
 
-Microsoft documentation: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent?view=powershell-7.1
+[Microsoft documentation][https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent?view=powershell-7.1]
 
 # Parsing the results
 
@@ -33,3 +33,7 @@ If you navigate to Windows Event viewer and toggle the XML View of an event, it 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/xmlview.png" width="100"/>
 
 These are the same data fields that you can use in your Get-WinEvent query.
+
+The event log record object you get from Get-WinEvent includes a method to create an XML version. This document has properties that expose the data used to construct the event log record:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/nodes.png" width="100"/>
