@@ -6,4 +6,4 @@ category: DFIR
 tags: [DFIR, Powershell, Sigma, Rules]
 ---
 
-![alt text](https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/powershell.png "Powershell")
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/powershell.png" width="200" height="200" />
