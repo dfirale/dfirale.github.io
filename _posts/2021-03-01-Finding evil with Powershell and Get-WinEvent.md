@@ -22,4 +22,4 @@ If you use FilterHashtable the data field must be an exact match. Wildcards are 
 
 For better performance, <u>always specify atleast the event id you are looking for</u>. I have total of 215 512 Sysmon logs which 12 027 are process create events (1). Yes I'm a hoarder.. Here is a comparison between specifying the id and piping it to where-object:
 
-<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/perf.PNG" width="100"/>
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/perf.png" width="100"/>
