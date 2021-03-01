@@ -47,3 +47,17 @@ Here is an example of querying Sysmon process create events where whoami.exe was
 # Finding the evil
 
 For the baseline and proof of concept I wanted to use [Florian Roth's](https://twitter.com/cyb3rops) [Godmode Sigma rule](https://github.com/Neo23x0/sigma/blob/master/other/godmode_sigma_rule.yml). It basically includes the most effective search queries to detect malicious activity - following the principle: if you had only one shot, what would you look for?
+
+By breaking down the Sigma rule conditions into arrays, we can loop through the eventlogs and print results when specific criteria is met.
+
+Example of Sigma CommandLine conditions:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdline.PNG" width="100"/>
+
+Let's do some regex magic and put that into an array:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps.PNG" width="100"/>
+
+Extract the needed nodes (CommandLine/ParentCommandLine) using XPath queries and look for matches in array (if match --> send-syslog):
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps1.PNG" width="100"/>
