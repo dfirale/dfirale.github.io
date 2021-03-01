@@ -34,7 +34,7 @@ If you navigate to Windows Event viewer and toggle the XML View of an event, it 
 
 These are the same data fields that you can use in your Get-WinEvent query.
 
-The event log record object you get from Get-WinEvent includes a method to create an XML version. This document has properties that expose the data used to construct the event log record:
+Luckily, the event log record object you get from Get-WinEvent includes a method to create an XML version. This document has properties that expose the data used to construct the event log record:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/nodes.png" width="100"/>
 
@@ -43,3 +43,7 @@ We can use these data nodes to do a more precise and unrestricted query with a s
 Here is an example of querying Sysmon process create events where whoami.exe was executed as system user:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/whoami.PNG" width="100"/>
+
+# Finding the evil
+
+For the baseline and proof of concept I wanted to use [Florian Roth's](https://twitter.com/cyb3rops) [Godmode Sigma rule](https://github.com/Neo23x0/sigma/blob/master/other/godmode_sigma_rule.yml). It basically includes the most effective search queries to detect malicious activity - following the principle: if you had only one shot, what would you look for?
