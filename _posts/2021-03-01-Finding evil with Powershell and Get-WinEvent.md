@@ -24,7 +24,7 @@ For better performance, <u>always specify atleast the event id you are looking f
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/perf.png" width="100"/>
 
-[Microsoft documentation][https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent?view=powershell-7.1]
+[Microsoft documentation](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent?view=powershell-7.1)
 
 # Parsing the results
 
@@ -37,3 +37,9 @@ These are the same data fields that you can use in your Get-WinEvent query.
 The event log record object you get from Get-WinEvent includes a method to create an XML version. This document has properties that expose the data used to construct the event log record:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/nodes.png" width="100"/>
+
+We can use these data nodes to do a more precise and unrestricted query with a simple logic. It also gives us more options to display the results. This can be accomplished by selecting the nodes using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries as seen in next image.
+
+Here is an example of querying Sysmon process create events where whoami.exe was executed as system user:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/whoami.png" width="100"/>
