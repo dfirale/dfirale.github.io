@@ -42,4 +42,4 @@ We can use these data nodes to do a more precise and unrestricted query with a s
 
 Here is an example of querying Sysmon process create events where whoami.exe was executed as system user:
 
-<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/whoami.png" width="100"/>
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/whoami.PNG" width="100"/>
