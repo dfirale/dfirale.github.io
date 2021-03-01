@@ -61,3 +61,13 @@ Let's do some regex magic and put that into an array:
 Extract the needed nodes (CommandLine/ParentCommandLine) using XPath queries and look for matches in array (if match --> send-syslog):
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps1.PNG" width="100"/>
+
+Same thing can be accomplished without Sysmon by using native [Windows Process creation auditing](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing) with commandline auditing enabled:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/4688.PNG" width="100"/>
+
+You could also look for malware launched by Office programs (winword.exe launching powershell.exe etc. etc.):
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropper.PNG" width="100"/>
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropperlogic.PNG" width="100"/>
