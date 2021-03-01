@@ -16,8 +16,8 @@ You can use Get-WinEvent cmdlet to scan local or remote eventlogs with specified
 
 With the FilterHashtable parameter a simple query looks something like this:
 
-<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic1.png" width="100"/>
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic1.PNG" width="100"/>
 
 If you use FilterHashtable the data field must be an exact match. Wildcards are not accepted:
 
-<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic2.png" width="100"/>
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/pic2.PNG" width="100"/>
