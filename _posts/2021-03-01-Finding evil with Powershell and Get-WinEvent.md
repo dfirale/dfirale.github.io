@@ -58,15 +58,15 @@ Let's do some regex magic and put that into an array:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps.PNG" width="100"/>
 
-Extract the needed nodes (CommandLine/ParentCommandLine) using XPath queries and look for matches in array (if match --> send-syslog):
+Extract the needed nodes (CommandLine/ParentCommandLine) using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries and look for matches in array (if match --> send-syslog):
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps1.PNG" width="100"/>
 
-Same thing can be accomplished without Sysmon by using native [Windows Process creation auditing](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing) with commandline auditing enabled:
+Same thing without Sysmon can be accomplished by using native [Windows Process creation auditing](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing) with commandline auditing enabled:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/4688.PNG" width="100"/>
 
-You could also look for malware launched by Office programs (winword.exe launching powershell.exe etc. etc.):
+You could also look for malware droppers launched by Office programs (winword.exe launching powershell.exe etc. etc.):
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropper.PNG" width="100"/>
 
