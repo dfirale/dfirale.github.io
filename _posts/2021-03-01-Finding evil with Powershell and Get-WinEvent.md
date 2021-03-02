@@ -48,7 +48,7 @@ Here is an example of querying Sysmon process create events where whoami.exe was
 
 For the baseline and proof of concept I wanted to use [Florian Roth's](https://twitter.com/cyb3rops) [Godmode Sigma rule](https://github.com/Neo23x0/sigma/blob/master/other/godmode_sigma_rule.yml). It basically includes the most effective search queries to detect malicious activity - following the principle: if you had only one shot, what would you look for?
 
-By breaking down the Sigma rule conditions into arrays, we can loop through the eventlogs and print results when specific criteria is met.
+By breaking down the Sigma rule conditions into arrays, we can loop through the eventlogs and send results via syslog when specific conditions are met. You can use your own syslog receiver or simple powershell and python receivers provided in my [repository](https://github.com/dfirale/evtscanner).
 
 Example of Sigma CommandLine conditions:
 
@@ -71,3 +71,12 @@ You could also look for malware droppers launched by Office programs (winword.ex
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropper.PNG" width="100"/>
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropperlogic.PNG" width="100"/>
+
+Allright. Let's fire it up and see what the results are. I'm going to use a receiver on the same host so the ip parameter is pointed to localhost: `.\evtscanner.ps1 -ip 127.0.0.1`
+
+Running the script for a while we already get some results. First one is a `whoami.exe` executed as system user and the second one is triggered by run key `Microsoft\Windows\CurrentVersion\Run` on commandline:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/results.png" width="100"/>
+
+
+
