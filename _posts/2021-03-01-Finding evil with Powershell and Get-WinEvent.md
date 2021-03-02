@@ -32,43 +32,43 @@ If you navigate to Windows Event Viewer and toggle the XML View of an event, it 
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/xmlview.png" width="100"/>
 
-These are the same **Data** fields which can be used in Get-WinEvent query.
+These are the same Data fields which can be used in Get-WinEvent query.
 
 Luckily, the event log record object you get from Get-WinEvent includes a method to create an XML version. This document has properties that expose the data used to construct the event log record:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/nodes.png" width="100"/>
 
-We can use the **Data** nodes to do a more precise and unrestricted query with a simple logic. It also gives us more options to display the results. This can be accomplished by selecting the nodes using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries as seen in next image.
+We can use the Data nodes to do a more precise and unrestricted query with a simple logic. It also gives us more options to display the results. This can be accomplished by selecting the nodes using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries as seen in next image.
 
 Here is an example of querying Sysmon process create events where whoami.exe was executed as system user:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/whoami.PNG" width="100"/>
 
-`You can select the wanted node attributes with .SelectSingleNode and match with their values.`
+You can select the wanted node attributes with `.SelectSingleNode` and match with their values.
 
 # Finding the evil
 
 For the baseline and proof of concept I wanted to use [Florian Roth's](https://twitter.com/cyb3rops) [Godmode Sigma rule](https://github.com/Neo23x0/sigma/blob/master/other/godmode_sigma_rule.yml). It basically includes the most effective search queries to detect malicious activity - following the principle: if you had only one shot, what would you look for?
 
-By dividing the Sigma rule conditions into arrays, we can loop through the eventlogs and send the results via Syslog when specific node value is matched in our predefined array. To recieve Syslog packets, you can use your own receiver or the simple powershell and python receivers provided in my [repository](https://github.com/dfirale/evtscanner).
+By dividing the Sigma rule conditions into arrays, we can loop through the eventlogs and send the results via Syslog when specific node value is matched in our predefined array. To recieve Syslog packets, you can use your own receiver or the simple powershell and python receivers provided in my [evtscanner repository](https://github.com/dfirale/evtscanner).
 
 Example of Sigma CommandLine conditions:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdline.PNG" width="100"/>
 
-Let's do some regex magic and put that into an array:
+Let's do some regex magic and convert that into an array:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps.PNG" width="100"/>
 
-Extract the needed nodes (CommandLine/ParentCommandLine) using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries and look for matching values in array (if node value match --> send-syslog):
+Extract the needed nodes (CommandLine/ParentCommandLine) using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries and look for matching values in array (if node value matches array --> send-syslog):
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/cmdlineps1.PNG" width="100"/>
 
-Same thing without Sysmon can be accomplished by using native [Windows process creation auditing](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing) with commandline auditing enabled:
+Same kind of auditing without Sysmon can be accomplished by utilising native [Windows process creation auditing](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing) with [commandline auditing](https://www.crowdstrike.com/blog/investigating-powershell-command-and-script-logging/) enabled:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/4688.PNG" width="100"/>
 
-You could also look for malware droppers launched by Office programs (winword.exe launching powershell.exe etc.):
+You could also look for [malware droppers launched by Office programs](https://attack.mitre.org/techniques/T1204/002/) (winword.exe launching powershell.exe etc.):
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropper.PNG" width="100"/>
 
@@ -84,7 +84,7 @@ Results are always presented in the same format:
 
 `<event time> WinEvtlog: <channel>: EVENT-ID(<id>): <provider>: COMPUTER: <computer>: <full event message in one line> CollectTime: <time when scanned>`
 
-The script execution time really depends on how many process create(1), registry(12,13) and file create(11) Sysmon events you have. With ~77k of those events the execution time is around 9 minutes and 33 seconds:
+The script execution time really depends on how many process create(1), registry(12,13) and file create(11) Sysmon events you have. With ~77k of those plus some native Windows process create events the execution time is around 9 minutes and 33 seconds:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/performance.png" width="100"/>
 
