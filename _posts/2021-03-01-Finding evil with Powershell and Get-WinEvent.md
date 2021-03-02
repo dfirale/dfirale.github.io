@@ -72,11 +72,20 @@ You could also look for malware droppers launched by Office programs (winword.ex
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/odropperlogic.PNG" width="100"/>
 
-Allright. Let's fire it up and see what the results are. I'm going to use a receiver on the same host so the ip parameter is pointed to localhost: `.\evtscanner.ps1 -ip 127.0.0.1`
+Let's fire it up and see what the results are. I'm going to use a receiver on the same host so the ip parameter is pointed to localhost: `.\evtscanner.ps1 -ip 127.0.0.1`
 
-Running the script for a while we already get some results. First one is a `whoami.exe` executed as system user and the second one is triggered by run key `Microsoft\Windows\CurrentVersion\Run` on commandline:
+After running the script for a while we already get some results. First one is a `whoami.exe` executed as `system` user and the second one is triggered by a run key `Microsoft\Windows\CurrentVersion\Run` on commandline:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/results.png" width="100"/>
 
+Results are always in the same format: 
+`<event time> WinEvtlog: <channel>: EVENT-ID(<id>): <provider>: COMPUTER: <computer>: <full log in one line> CollectTime: <time when scanned>`
 
+The script execution time really depends on how many process create(1), registry(12,13) and file create(11) Sysmon events you have. With ~77k of those events the execution time is around 9 minutes and 33 seconds:
+
+<img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/performance.png" width="100"/>
+
+I'll try to update this script with some more Sigma rules in future. Hat tip to [Florian](https://twitter.com/cyb3rops) and other contributors for maintaining the [Sigma](https://github.com/SigmaHQ/sigma) rule base.
+
+Don't forget to check out the script described in this blog post! [https://github.com/dfirale/evtscanner](https://github.com/dfirale/evtscanner)
 
