@@ -32,13 +32,13 @@ If you navigate to Windows Event Viewer and toggle the XML View of an event, it 
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/xmlview.png" width="100"/>
 
-These are the same *Data* fields which can be used in Get-WinEvent query.
+These are the same **Data** fields which can be used in Get-WinEvent query.
 
 Luckily, the event log record object you get from Get-WinEvent includes a method to create an XML version. This document has properties that expose the data used to construct the event log record:
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/nodes.png" width="100"/>
 
-We can use the *Data* nodes to do a more precise and unrestricted query with a simple logic. It also gives us more options to display the results. This can be accomplished by selecting the nodes using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries as seen in next image.
+We can use the **Data** nodes to do a more precise and unrestricted query with a simple logic. It also gives us more options to display the results. This can be accomplished by selecting the nodes using [XPath](https://devblogs.microsoft.com/scripting/understanding-xml-and-xpath/) queries as seen in next image.
 
 Here is an example of querying Sysmon process create events where whoami.exe was executed as system user:
 
@@ -82,7 +82,7 @@ After running the script for a while we already get some results. First one is a
 
 Results are always presented in the same format:
 
-`<event time> WinEvtlog: <channel>: EVENT-ID(<id>): <provider>: COMPUTER: <computer>: <full log in one line> CollectTime: <time when scanned>`
+`<event time> WinEvtlog: <channel>: EVENT-ID(<id>): <provider>: COMPUTER: <computer>: <full event message in one line> CollectTime: <time when scanned>`
 
 The script execution time really depends on how many process create(1), registry(12,13) and file create(11) Sysmon events you have. With ~77k of those events the execution time is around 9 minutes and 33 seconds:
 
@@ -90,6 +90,8 @@ The script execution time really depends on how many process create(1), registry
 
 I'll try to update this script with some more Sigma rules in future. Hat tip to [Florian](https://twitter.com/cyb3rops) and other contributors for maintaining the [Sigma](https://github.com/SigmaHQ/sigma) rule base.
 
-Don't forget to check out the script described in this blog post! [https://github.com/dfirale/evtscanner](https://github.com/dfirale/evtscanner)
+### Don't forget to check out the script described in this blog post! [https://github.com/dfirale/evtscanner](https://github.com/dfirale/evtscanner)
+
+#### Thank you!
 
 <img src="https://raw.githubusercontent.com/dfirale/dfirale.github.io/master/assets/images/GetWinEvent/logwell.jpg" width="100"/>
